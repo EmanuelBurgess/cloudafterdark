@@ -1,4 +1,4 @@
-#1/bin/bash
+#!/bin/bash
 rapper=$1
 rapper="Common"
 DJ=$1
