@@ -1,0 +1,23 @@
+
+Agile meeting types.
+
+Daily stand up (15 mins)
+ What you did yesterday?
+ What are you plans for today?
+ Do you have any blockers?
+
+Sprint Planning (1-2 hours
+ Determine which stories/task will be done during sprint
+ Get additional details for the stories
+ Create tasks/assign tasks
+ Led by Scrum Master
+
+3. Backlog Grooming (1 hour)
+ Determine what work needs to be done by the team.
+ Estimate the work
+ Led by Product Owner
+
+4. Sprint Retrospective (1 hour)
+ What went well?
+ What can be improved?
+ Led by Scrum Master.
