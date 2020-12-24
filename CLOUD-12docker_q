@@ -1,0 +1,38 @@
+
+
+how do you list running containers? docker container ls
+
+How do you list stopped containers? docker container ls -a
+
+How do you view all images? docker image ls
+
+How do you delete images? docker image rm -f imagename
+
+How do you delete containers? docker container rm -f imageid | docker container rmi imageid
+
+What is a docker file? 4 commands in a script
+1. mkdir for Image file
+2. vi Dockerfile
+3. Commands
+  a. from - creates a layer for the OS, ubuntu, centos, W10, etc..
+  b. copy - adds files from from you docker file's current directory
+  c. run  - builds your applications with make ( apache, MYSQL, etc)
+  d. CMD  - specifies what command to run within the container
+4. docker build -t imagename
+
+How do you build a DOckerfile ? docker build -t imagename
+
+How do you stop a container? docker container stop containerid
+
+How do you start a container? docker run imageid -it -d, to run in background. no -d to go right into the container.
+
+How do you log into a running container? docker exec-it containername /bin/bash
+
+How do you detach a container? add -d, to the docker run command.
+
+What does detach mean?  Detach means the container is running in the background. You still have access to the local machinescommand line while the container runs.
+
+Bonus:
+How do you see what network the container is running on? docker container inspect $containerid
+
+What is a Docker volume? A logical block of storage that is available even after container is destroyed.
