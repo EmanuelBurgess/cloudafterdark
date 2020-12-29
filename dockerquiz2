@@ -1,0 +1,24 @@
+I.What are the types of docker networks? Describe what each is for.
+  A. Bridge - multiple containers to communicate on same docker house
+  B. Host Networks - Network stack not isoloated from Docker Host. But other container aspects stay isolated
+  C. Overlay - when containers are running on different docker hosts and communicate, or multiple apps work together. Swarm.
+  D. Macvlan - containers look like physical machine with MAC address
+  E. Third Party plug ins - intergrates DOcker with specialized Network Stacks.
+
+II. What is the command to create you own network?
+  A. docker network create -d(detached) bridge(network type) mybridge(netowork name)
+
+III. What is the default network?
+  A. Bridge
+
+IV. How do you show details about a network?
+  A. docker network inspect 234234de4 (network ID )
+
+V. How do you list all networks?
+  A. docker network ls
+
+VI. How do you log into a running container?
+  A. docker exec -it 43534596860(container ID)
+
+VII. How do you exit a container?
+  A. cntrl+C, cntl+d, exit at terminal
