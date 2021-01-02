@@ -1,0 +1,4 @@
+
+Local State files are the local copy of the file that keeps track of all the things you have deployed via terraform.
+Terraform is a declarative language. Meaning terraform looks at your code and matches what is already deployed. Terraform then
+makes the changes needed for your deployed infrastructure, to match the state file. This why you can delete a resource, by simply removing the resource from your code and then applying the code.
