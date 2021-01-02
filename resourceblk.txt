@@ -1,10 +1,10 @@
 What is a resource block?
 A resource block is an element of Terraform. Each resource block describes one or more infrastructure objects, such as virtual networks, compute instances, or higher-level components such as DNS records.
-
+Ther are multiple arguments that can be passed in the resource block.
 
 resource "aws_instance" "web" {
   ami           = "ami-a1b2c3d4"
   instance_type = "t2.micro"
 }
 Resource type is "aws instnace"
-Resource locan name is "web". Resource will be called web eleswhere in the same Terraform script.
+Resource locan name is "web". Resource will be called "web" eleswhere in the same Terraform script.
