@@ -1,0 +1,24 @@
+What is a state file? A state file is the file that terraform uses to keep track of what you have deployed with terraform.
+
+What are the different types of state files? remote and local
+ 
+What directory is your state file located in? terraform.tfstate
+
+Where are remote state files located?  a remote data store, which can then be shared between all members of a team.
+
+What is a resource block?describes one or more infrastructure objects, such as virtual networks, compute instances, or higher-level components such as DNS records
+
+What is an argument? a syntax construct that assigns a value to a name. Arguments have the form <IDENTIFIER> = <EXPRESSION>, and they appear within blocks
+
+What format are arguments declared in?  <IDENTIFIER> = <EXPRESSION>
+
+What is a variable? a variable is a symbolic name associated with a value.
+
+How does Terraform determine what resource block is created first?
+
+What is a provider? A plugin for Terraform that makes a collection of related resources available. A provider plugin is responsible for understanding API interactions with some kind of service and exposing resources based on that API.
+
+Can you have a different version of a provider? yes
+
+What happens if you don't specify a provider version in the provider block?The latest version is used.
+
