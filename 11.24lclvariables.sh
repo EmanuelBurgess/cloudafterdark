@@ -1,5 +1,5 @@
 #1/bin/bash
-
+#making a change for a pull request
 
 func(){
 	echo "$1"
@@ -11,7 +11,7 @@ func(){
 
 func " My name is Trey"
 func "I like DevOPs"
-func "I am almost a DevOPs engineer"
+func "I am a DevOPs engineer"
 
 
 
