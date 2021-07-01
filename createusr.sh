@@ -1,4 +1,4 @@
-#1/bin/bash
+#!/bin/bash
 
 #creating this script tp create IAM user in AWS
 # creating enviromental vairable. When script is ran this will be the first argument
