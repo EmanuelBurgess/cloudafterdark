@@ -1,0 +1,6 @@
+Create Pull request
+Create a script that uses environment variables push up to repo
+create a scdipt using local variables push up to repo
+crate a script to automate creating a bucket in awscli using environment variable : requirments - what is the command to create a s3 bucket / 
+find out what part of the script to amke an envornment varible
+Look into if statements
