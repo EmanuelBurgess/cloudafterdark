@@ -1,4 +1,4 @@
-import datetime
+ import datetime
 import json
 import logging
 import mpse_jwt_generator
@@ -18,18 +18,6 @@ JWTS_BY_ROLE = {
 }
 JWT_ISSUER = 'osre-ops@navapbc.com'
 JWT_CONTRACT_MAP_FILE = 'rq2w-contract-id-map.csv'
-
-def extract_ado_from_role(role):
-    """Extracts the ADO from the given role string.
-
-    Args:
-        role: The role string, e.g., "beneapi-admin"
-
-    Returns:
-        The ADO part of the role, e.g., "beneapi"
-    """
-
-    return role.split("-")[0]
 
 def handler(event, context):
     loglevel = logging.getLevelNamesMapping()[os.getenv("LOGLEVEL", "INFO")]
@@ -81,30 +69,35 @@ def handler(event, context):
 def check_authorization(subject: str, role: str) -> bool:
     subject_unqualified_name = subject.rpartition(":")[0]
     logging.debug(
-        f"Request is for {subject}, parsed unqualified subject string for auth check is {subject_unqualified_name}")
+        f"Request is for {subject}, parsed unqualified subject string for auth check is {subject_unqualified_name}"
+    )
 
-    # Extract the ADO from the role
-    ado = extract_ado_from_role(role)
+    if role == OSRE_POWERUSER:
+        return True
+
+    # Extract the ADO and environment from the role
+    role_parts = role.split("-")
+    if len(role_parts) < 3 or not role.startswith('ado-'):
+        logging.warning(f"Invalid role format: {role}")
+        return False
+
+    env = role_parts[1]
+    ado = "-".join(role_parts[2:])
+    
+   
+
+    # Check if the environment is valid
+    if env not in ["dev", "impl", "prod"]:
+        logging.warning(f"Unauthorized environment: {env}")
+        return False
 
     # Check if the ADO is in the JWTS_BY_ROLE keys
     if ado not in JWTS_BY_ROLE.keys():
         logging.warning(f"Unauthorized ADO: {ado}")
         return False
 
-    
-    parse_role = role.split("-")[2:]
-    parse_role = "-".join(parse_role)
-    logging.debug(
-        f"Request is for {role}, parsed unqualified role string for auth check is {parse_role}"
-    )
-
-    if role == OSRE_POWERUSER:
-        return True
-    elif subject_unqualified_name in JWTS_BY_ROLE[parse_role]:
-        return True
-    else:
-        return False
-
+    # Check if the subject is authorized for the ADO
+    return subject_unqualified_name in JWTS_BY_ROLE[ado]
 
 def generate_jwt(subject: str) -> str:
     environment = os.getenv("ENV", "dev")
@@ -120,3 +113,23 @@ def generate_jwt(subject: str) -> str:
     jwt = generator.generate_jwt(
         subject, environment, expiration, 'SCRAPER_API')
     return jwt
+# Sample event data
+event = {
+    "pathParameters": {
+        "subject": "TEST:DentalAdju:02"
+    },
+    "requestContext": {
+        "identity": {
+            "userArn": "arn:aws:blahblah/ado-prod-da-admin/AB23"
+        }
+    }
+}
+
+# Context is usually empty for local testing
+context = {}
+
+# Call the handler function
+response = handler(event, context)
+
+# Print the response
+print(response)
