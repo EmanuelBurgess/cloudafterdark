@@ -1,5 +1,6 @@
 #!/bin/bash
-BUCKET_NAMES = "spaghetti27yam, cheese21port, water52bottle"
+
+BUCKET_NAMES = "spaghett207yam cheese21port water52bottle"
 
 for x in $BUCKET_NAMES
 do
